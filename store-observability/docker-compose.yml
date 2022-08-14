@@ -1,0 +1,86 @@
+version : '3'
+ 
+services:
+  webapi:
+    build:
+      context: .
+      dockerfile: ./WebApi/Dockerfile
+    ports:
+      - 44000:44000
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://*:44000
+    networks:
+      - dotnetcorepromgrafana
+    depends_on:
+      - db
+    links:
+      - db
+
+  loadtest:
+    build:
+      context: .
+      dockerfile: ./WebApi.LoadTest/Dockerfile
+    ports:
+      - 44001:44001
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://*:44001
+    networks:
+      - dotnetcorepromgrafana
+    depends_on:
+      - webapi
+    links:
+      - webapi
+
+  db:
+    container_name: sql-server-db
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - 1434:1433
+    expose: 
+      - 1433
+    environment:
+      MSSQL_SA_PASSWORD: "P@ssw0rd"
+      ACCEPT_EULA: "Y"
+    networks:
+      - dotnetcorepromgrafana
+      
+  prometheus:
+    image: prom/prometheus
+    restart: always
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    networks:
+      - dotnetcorepromgrafana
+
+  grafana: 
+    image: grafana/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=P@ssw0rd
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - dotnetcorepromgrafana
+
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - 9411:9411
+    networks:
+      - dotnetcorepromgrafana
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "6831:6831/udp"
+      - "16686:16686"
+    networks:
+      - dotnetcorepromgrafana
+  
+networks:
+  dotnetcorepromgrafana:

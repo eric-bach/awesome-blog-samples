@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{DCCE7DA4-B249-4DEB-AB50-05FE1C4C45A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{4A414E43-B964-48D6-97CD-F873517A88DE}"
+	ProjectSection(SolutionItems) = preProject
+		Notes.txt = Notes.txt
+		Query.sql = Query.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{126AD464-9A5D-4F12-8387-22957D3E288A}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		prometheus.yml = prometheus.yml
+		shortcut.ps1 = shortcut.ps1
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.LoadTest", "WebApi.LoadTest\WebApi.LoadTest.csproj", "{F93EE7C3-56AF-41B2-9AC3-7E5B5A278B25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCCE7DA4-B249-4DEB-AB50-05FE1C4C45A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCCE7DA4-B249-4DEB-AB50-05FE1C4C45A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCCE7DA4-B249-4DEB-AB50-05FE1C4C45A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCCE7DA4-B249-4DEB-AB50-05FE1C4C45A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F93EE7C3-56AF-41B2-9AC3-7E5B5A278B25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F93EE7C3-56AF-41B2-9AC3-7E5B5A278B25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F93EE7C3-56AF-41B2-9AC3-7E5B5A278B25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F93EE7C3-56AF-41B2-9AC3-7E5B5A278B25}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95C6F4EA-EE3C-4873-BB61-E23AEC3A2D72}
+	EndGlobalSection
+EndGlobal

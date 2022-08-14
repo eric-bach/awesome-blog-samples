@@ -1,0 +1,6 @@
+Start-Process "http://localhost:9411/zipkin"
+Start-Process "http://localhost:16686"
+Start-Process "http://localhost:9090"
+Start-Process "http://localhost:3000"
+Start-Process "http://localhost:44000"
+Start-Process "http://localhost:44000/metrics"

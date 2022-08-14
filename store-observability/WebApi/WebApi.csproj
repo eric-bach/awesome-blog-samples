@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>cb475a8b-951f-4983-99bc-5c63b625aa9a</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="10.1.1" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="Prometheus.Client" Version="4.2.0" />
+    <PackageReference Include="Prometheus.Client.AspNetCore" Version="4.1.1" />
+    <PackageReference Include="Prometheus.Client.DependencyInjection" Version="0.2.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.2" />
+
+    <!--OpenTelemetry Instrumentation-->
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.0.0-rc1.1" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.0.0-rc1.1" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.0.0-rc1.1" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.SqlClient" Version="1.0.0-rc1.1" />
+
+    <!--OpenTelemetry Tracing-->
+    <PackageReference Include="NewRelic.OpenTelemetry" Version="1.0.0-rc1.9" />
+		<PackageReference Include="OpenTelemetry.Exporter.Jaeger" Version="1.0.0-rc1.1" />
+		<PackageReference Include="OpenTelemetry.Exporter.Zipkin" Version="1.0.0-rc1.1" />
+    <PackageReference Include="OpenTelemetry.Exporter.Prometheus" Version="1.0.0-rc1.1" />
+
+    <!--OpenTelemetry Logging-->
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.0.0-rc1.1" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,17 @@
+global:
+  scrape_interval:     10s # By default, scrape targets every 5 seconds.
+
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  # external_labels:
+  #   monitor: 'nats-openrmf-server'
+
+# A scrape configuration containing exactly one endpoint to scrape:
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: 'webapi_prometheus'
+    # metrics_path defaults to '/metrics'
+    static_configs:
+    # replace the IP with your local IP for development
+    # localhost is not it, as that is w/in the container :)
+    - targets: ['webapi:44000']
