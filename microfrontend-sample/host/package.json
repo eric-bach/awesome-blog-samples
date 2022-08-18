@@ -10,8 +10,7 @@
   },
   "license": "MIT",
   "author": {
-    "name": "Jack Herrington",
-    "email": "jherr@pobox.com"
+    "name": "Eric Bach"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",

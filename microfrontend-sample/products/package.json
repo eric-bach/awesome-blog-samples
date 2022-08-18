@@ -10,8 +10,7 @@
   },
   "license": "MIT",
   "author": {
-    "name": "Jack Herrington",
-    "email": "jherr@pobox.com"
+    "name": "Eric Bach"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
@@ -19,6 +18,7 @@
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.10.4",
+    "@faker-js/faker": "^7.4.0",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.2",
     "autoprefixer": "^10.1.0",
@@ -34,7 +34,6 @@
     "webpack-dev-server": "^4.3.1"
   },
   "dependencies": {
-    "faker": "^5.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }
