@@ -1,16 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'solid-js/web';
 import 'products/ProductsIndex';
 import 'cart/CartIndex';
 
 import './index.css';
 
 const App = () => (
-  <div className='container'>
+  <div class='container'>
     <strong>Host</strong>
     <div id='products-dev'></div>
     <div id='cart-dev'></div>
   </div>
 );
-
-ReactDOM.render(<App />, document.getElementById('app'));
+render(App, document.getElementById('app'));

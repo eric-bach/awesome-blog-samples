@@ -6,13 +6,16 @@ module.exports = {
   output: {
     publicPath: 'http://localhost:8080/',
   },
+
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
   },
+
   devServer: {
     port: 8080,
     historyApiFallback: true,
   },
+
   module: {
     rules: [
       {
@@ -35,22 +38,21 @@ module.exports = {
       },
     ],
   },
+
   plugins: [
     new ModuleFederationPlugin({
-      name: 'host',
+      name: 'host.next',
+      filename: 'remoteEntry.js',
       remotes: {
         products: 'products@http://localhost:8081/remoteEntry.js',
         cart: 'cart@http://localhost:8082/remoteEntry.js',
       },
+      exposes: {},
       shared: {
         ...deps,
-        react: {
+        'solid-js': {
           singleton: true,
-          requiredVersion: deps.react,
-        },
-        'react-dom': {
-          singleton: true,
-          requiredVersion: deps['react-dom'],
+          requiredVersion: deps['solid-js'],
         },
       },
     }),
