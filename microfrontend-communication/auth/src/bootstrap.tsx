@@ -5,7 +5,7 @@ import { createMemoryHistory, createBrowserHistory } from 'history';
 import App from './App';
 
 // Mount function to start up the app
-const mount = (el: any, { onNavigate, onSignIn, onSignUp, onVerify, defaultHistory, initialPath }: any) => {
+const mount = (el: any, { onNavigate, onSignIn, onSignUp, defaultHistory, initialPath }: any) => {
   const history = defaultHistory || createMemoryHistory({ initialEntries: [initialPath] });
 
   // When navigation occurs, use the listen handler to call onNavigate()
@@ -17,7 +17,6 @@ const mount = (el: any, { onNavigate, onSignIn, onSignUp, onVerify, defaultHisto
     <App
       onSignIn={(user: string, password: string) => onSignIn(user, password)}
       onSignUp={(user: string, password: string) => onSignUp(user, password)}
-      onVerify={() => onVerify()}
       history={history}
     />,
     el
