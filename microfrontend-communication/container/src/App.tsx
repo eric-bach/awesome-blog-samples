@@ -1,12 +1,10 @@
 import React, { lazy, Suspense, useState, useEffect } from 'react';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
-import { makeStyles, StylesProvider, createGenerateClassName } from '@material-ui/core/styles';
-import MuiAlert from '@material-ui/lab/Alert';
+import { StylesProvider, createGenerateClassName } from '@material-ui/core/styles';
 import { createBrowserHistory } from 'history';
 
 import Progress from './components/Progress';
 import Header from './components/Header';
-
 import { AuthStatus } from './components/AuthApp';
 
 const MarketingLazy = lazy(() => import('./components/MarketingApp'));
@@ -19,27 +17,8 @@ const generateClassName = createGenerateClassName({
 
 const history = createBrowserHistory();
 
-const useStyles = makeStyles((theme) => ({
-  '@global': {
-    a: {
-      textDecoration: 'none',
-    },
-  },
-  error: {
-    color: 'white',
-    backgroundColor: 'red',
-  },
-}));
-
-function Alert(props: any) {
-  return <MuiAlert elevation={6} variant='filled' {...props} />;
-}
-
 const App = () => {
-  const classes = useStyles();
-
   const [authStatus, setAuthStatus] = useState<AuthStatus>(AuthStatus.SignedOut);
-  const [displayError, setDisplayError] = useState<boolean>(false);
 
   useEffect(() => {
     if (authStatus === AuthStatus.SignedIn) {
@@ -68,22 +47,8 @@ const App = () => {
           <Suspense fallback={<Progress />}>
             <Switch>
               <Route path='/auth'>
-                {displayError && (
-                  <Alert
-                    className={classes.error}
-                    severity='error'
-                    onClose={() => {
-                      setDisplayError(false);
-                    }}
-                  >
-                    {authStatus === AuthStatus.SignedOut
-                      ? 'Sign in Failed! Email and/or password is incorrect.'
-                      : 'Please verify account before signing in.'}
-                  </Alert>
-                )}
                 <AuthLazy
                   onSignIn={(status: AuthStatus) => {
-                    setDisplayError(status !== AuthStatus.SignedIn);
                     setAuthStatus(status);
                   }}
                   onSignUp={(status: AuthStatus) => {
