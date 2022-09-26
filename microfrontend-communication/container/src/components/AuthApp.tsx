@@ -21,7 +21,6 @@ export default ({ onSignIn, onSignUp }: any) => {
 
       // Callback for Auth SignIn button
       onSignIn: async (user: string, password: string) => {
-        console.log('SIGNED IN: ', user);
         onSignIn();
       },
 

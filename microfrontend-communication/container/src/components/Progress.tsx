@@ -1,24 +1,18 @@
 import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
-import LinearProgress from '@material-ui/core/LinearProgress';
-
-const useStyles = makeStyles((theme) => {
-  return createStyles({
-    bar: {
-      width: '100%',
-      '& > * + *': {
-        marginTop: theme.spacing(2),
-      },
-    },
-  });
-});
+import LinearProgress from '@mui/material/LinearProgress';
+import Box from '@mui/material/Box';
 
 export default () => {
-  const classes = useStyles();
-
   return (
-    <div className={classes.bar}>
+    <Box
+      sx={{
+        width: '100%',
+        '& > * + *': {
+          marginTop: 2,
+        },
+      }}
+    >
       <LinearProgress />
-    </div>
+    </Box>
   );
 };
