@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createMemoryHistory, createBrowserHistory } from 'history';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
 
+import './MuiClassNameSetup';
 import App from './App';
+import theme from './theme';
 
 // Mount function to start up the app
 const mount = (el: any, { onNavigate, onSignIn, onSignUp, defaultHistory, initialPath }: any) => {
@@ -14,11 +18,14 @@ const mount = (el: any, { onNavigate, onSignIn, onSignUp, defaultHistory, initia
   }
 
   ReactDOM.render(
-    <App
-      onSignIn={(user: string, password: string) => onSignIn(user, password)}
-      onSignUp={(user: string, password: string) => onSignUp(user, password)}
-      history={history}
-    />,
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <App
+        onSignIn={(user: string, password: string) => onSignIn(user, password)}
+        onSignUp={(user: string, password: string) => onSignUp(user, password)}
+        history={history}
+      />
+    </ThemeProvider>,
     el
   );
 
