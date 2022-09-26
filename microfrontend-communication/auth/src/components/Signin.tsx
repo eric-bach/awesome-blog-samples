@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -9,39 +9,11 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { Theme } from '@mui/material/styles';
-import { makeStyles } from '@mui/styles';
+import Box from '@mui/material/Box';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-const useStyles = makeStyles((theme: Theme) => ({
-  '@global': {
-    a: {
-      textDecoration: 'none',
-    },
-  },
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%',
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
-
 export default function SignIn({ onSignIn }: any) {
-  const classes = useStyles();
-
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -58,55 +30,83 @@ export default function SignIn({ onSignIn }: any) {
 
   return (
     <Container component='main' maxWidth='xs'>
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
+      <Box
+        sx={{
+          mt: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Avatar
+          sx={{
+            m: 1,
+            bgcolor: 'secondary.main',
+          }}
+        >
           <LockOutlinedIcon />
         </Avatar>
         <Typography component='h1' variant='h5'>
           Sign in
         </Typography>
-        <form onSubmit={formik.handleSubmit} className={classes.form} noValidate>
-          <TextField
-            id='email'
-            name='email'
-            label='Email Address'
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            error={formik.touched.email && Boolean(formik.errors.email)}
-            helperText={formik.touched.email && formik.errors.email}
-            variant='outlined'
-            margin='normal'
-            required
-            fullWidth
-            autoComplete='email'
-            autoFocus
-          />
-          <TextField
-            id='password'
-            name='password'
-            label='Password'
-            type='password'
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            error={formik.touched.password && Boolean(formik.errors.password)}
-            helperText={formik.touched.password && formik.errors.password}
-            variant='outlined'
-            margin='normal'
-            required
-            fullWidth
-            autoComplete='current-password'
-          />
-          <FormControlLabel control={<Checkbox value='remember' color='primary' />} label='Remember me' />
-          <Button type='submit' fullWidth variant='contained' color='primary' className={classes.submit}>
-            Sign In
-          </Button>
-          <Grid container>
-            <Grid item>
-              <Link to='/auth/signup'>{"Don't have an account? Sign Up"}</Link>
+        <Box
+          sx={{
+            width: '100%',
+            mp: 1,
+          }}
+        >
+          <form onSubmit={formik.handleSubmit} noValidate>
+            <TextField
+              id='email'
+              name='email'
+              label='Email Address'
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              helperText={formik.touched.email && formik.errors.email}
+              variant='outlined'
+              margin='normal'
+              required
+              fullWidth
+              autoComplete='email'
+              autoFocus
+            />
+            <TextField
+              id='password'
+              name='password'
+              label='Password'
+              type='password'
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              error={formik.touched.password && Boolean(formik.errors.password)}
+              helperText={formik.touched.password && formik.errors.password}
+              variant='outlined'
+              margin='normal'
+              required
+              fullWidth
+              autoComplete='current-password'
+            />
+            <FormControlLabel control={<Checkbox value='remember' color='primary' />} label='Remember me' />
+            <Button
+              type='submit'
+              fullWidth
+              variant='contained'
+              color='primary'
+              sx={{
+                mt: 3,
+                mb: 2,
+              }}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item>
+                <Link to='/auth/signup'>{"Don't have an account? Sign Up"}</Link>
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
-      </div>
+          </form>
+        </Box>
+      </Box>
     </Container>
   );
 }
