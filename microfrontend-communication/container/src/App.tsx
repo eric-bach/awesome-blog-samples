@@ -40,7 +40,7 @@ const App = () => {
               />
             </Route>
             <Route path='/home'>
-              {isSignedIn && <Redirect to='/' />}
+              {!isSignedIn && <Redirect to='/auth/signin' />}
               <DashboardLazy />
             </Route>
             <Route path='/' component={MarketingLazy} />

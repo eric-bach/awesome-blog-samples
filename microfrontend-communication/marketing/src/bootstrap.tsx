@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createMemoryHistory, createBrowserHistory } from 'history';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
 
+import './MuiClassNameSetup';
 import App from './App';
+import theme from './theme';
 
 // Mount function to start up the app
 const mount = (el: any, { onNavigate, defaultHistory, initialPath }: any) => {
@@ -13,7 +17,13 @@ const mount = (el: any, { onNavigate, defaultHistory, initialPath }: any) => {
     history.listen(onNavigate);
   }
 
-  ReactDOM.render(<App history={history} />, el);
+  ReactDOM.render(
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <App history={history} />
+    </ThemeProvider>,
+    el
+  );
 
   return {
     onParentNavigate({ pathname: nextPathname }: { pathname: string }) {

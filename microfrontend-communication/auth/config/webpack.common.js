@@ -1,5 +1,3 @@
-const Dotenv = require('dotenv-webpack');
-
 module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
@@ -7,19 +5,24 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(css|s[ac]ss)$/i,
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
+      },
+      {
         test: /\.m?js/,
-        type: 'javascript/auto',
         resolve: {
           fullySpecified: false,
         },
       },
       {
-        test: /\.(css|s[ac]ss)$/i,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
-      },
-      {
-        test: /\.(ts|tsx|js|jsx)$/,
+        test: /\.[jt]sx?$/,
+        resolve: {
+          fullySpecified: false,
+        },
         exclude: /node_modules/,
+        resolve: {
+          fullySpecified: false,
+        },
         use: {
           loader: 'babel-loader',
           options: {
@@ -30,5 +33,4 @@ module.exports = {
       },
     ],
   },
-  plugins: [new Dotenv()],
 };
