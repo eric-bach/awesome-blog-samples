@@ -1,5 +1,3 @@
-const Dotenv = require('dotenv-webpack');
-
 module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
@@ -30,5 +28,4 @@ module.exports = {
       },
     ],
   },
-  plugins: [new Dotenv()],
 };
