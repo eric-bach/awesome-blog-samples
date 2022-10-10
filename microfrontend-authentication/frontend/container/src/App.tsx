@@ -1,7 +1,6 @@
 import React, { lazy, Suspense, useState, useEffect } from 'react';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import MuiAlert from '@material-ui/lab/Alert';
+import MuiAlert from '@mui/material/Alert';
 import { createBrowserHistory } from 'history';
 
 import Progress from './components/Progress';
@@ -16,25 +15,11 @@ const DashboardLazy = lazy(() => import('./components/DashboardApp'));
 
 const history = createBrowserHistory();
 
-const useStyles = makeStyles((theme) => ({
-  '@global': {
-    a: {
-      textDecoration: 'none',
-    },
-  },
-  error: {
-    color: 'white',
-    backgroundColor: 'red',
-  },
-}));
-
 function Alert(props: any) {
-  return <MuiAlert elevation={6} variant='filled' {...props} />;
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 const App = () => {
-  const classes = useStyles();
-
   const [authStatus, setAuthStatus] = useState<AuthStatus>(AuthStatus.SignedOut);
   const [displayError, setDisplayError] = useState<boolean>(false);
 
@@ -64,11 +49,14 @@ const App = () => {
           />
           <Suspense fallback={<Progress />}>
             <Switch>
-              <Route path='/auth'>
+              <Route path="/auth">
                 {displayError && (
                   <Alert
-                    className={classes.error}
-                    severity='error'
+                    sx={{
+                      color: 'white',
+                      backgroundColor: 'red',
+                    }}
+                    severity="error"
                     onClose={() => {
                       setDisplayError(false);
                     }}
@@ -91,11 +79,11 @@ const App = () => {
                   }}
                 />
               </Route>
-              <Route path='/home'>
-                {authStatus !== AuthStatus.SignedIn && <Redirect to='/' />}
+              <Route path="/home">
+                {authStatus !== AuthStatus.SignedIn && <Redirect to="/" />}
                 <DashboardLazy />
               </Route>
-              <Route path='/' component={MarketingLazy} />
+              <Route path="/" component={MarketingLazy} />
             </Switch>
           </Suspense>
         </AuthProvider>
