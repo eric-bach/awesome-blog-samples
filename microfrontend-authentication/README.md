@@ -1,5 +1,7 @@
 # Getting Started
 
+## Install Backend
+
 1. Install dependencies
 
    ```
@@ -12,34 +14,42 @@
    ```
    $ cd /src/cognitoPostConfirmation
    $ npm install
+
    ```
 
-3. Deploy backend
+3. Install dependencies in each of the folders in /frontend
+
+   ```
+   $ cd /frontend/auth
+   $ npm install
+
+   $ cd /frontend/container
+   $ npm install
+
+   $ cd /frontend/dashbaord
+   $ npm install
+
+   $ cd /frontend/marketing
+   $ npm install
+   ```
+
+4. Deploy stacks
 
    ```
    $ cd /backend
-   $ cdk deploy
+   $ cdk deploy --all --profile AWS_PROFILE
    ```
 
-4. Create an /frontend/container/.env file with the values from the outputs of the CDK deploy
+5. Create an /frontend/container/.env file with the values from the outputs of the CDK deploy
 
    ```
    REACT_APP_USERPOOL_ID=
    REACT_APP_CLIENT_ID=
    ```
 
-# Start the frontend
-
-1. Install dependencies in each of the folders in /frontend
+6. Re-deploy stacks with the new outputs
 
    ```
-   $ cd /frontend/auth
-   $ npm install
-   ```
-
-2. Start each MFE app in each of the folders in /frontend
-
-   ```
-   $ cd /frontend/auth
-   $ npm run start
+   $ cd /backend
+   $ cdk deploy --all --profile AWS_PROFILE
    ```
