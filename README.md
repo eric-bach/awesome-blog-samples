@@ -2,6 +2,7 @@
 
 This is a list of repos from my various blog articles:
 
+- [api-gateway-websocket-cognito](https://medium.com/@bacheric) - API Gateway Websocket with Lambda Cognito Authorizer (Python)
 - [remix-cdk](https://medium.com/@bacheric) - Deploying a Remix application with AWS CDk
 - [microfrontend-authentication](https://medium.com/ama-tech-blog/mastering-microfrontends-authentication-with-aws-cognito-37d1ed63114a) - Mastering Microfrontends: Authentication with AWS Cognito User Pool
 - [microfrontend-communication](https://medium.com/ama-tech-blog/mastering-microfrontends-routing-and-communication-815f3a7b7910) - Mastering Microfrontends: Routing and Communication
