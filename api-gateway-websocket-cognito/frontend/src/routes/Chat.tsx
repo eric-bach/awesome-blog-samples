@@ -80,18 +80,16 @@ const Chat: React.FC = () => {
   };
 
   return (
-    <div>
-      <Grid container columns={12}>
-        <ChatMessages
-          message={message}
-          conversation={conversation}
-          isLoadingMessage={isLoadingMessage}
-          submitMessage={(e: any) => submitMessage(e)}
-          handleKeyPress={handleKeyPress}
-          handleMessageChange={handleMessageChange}
-        />
-      </Grid>
-    </div>
+    <Grid container columns={12}>
+      <ChatMessages
+        message={message}
+        conversation={conversation}
+        isLoadingMessage={isLoadingMessage}
+        submitMessage={(e: any) => submitMessage(e)}
+        handleKeyPress={handleKeyPress}
+        handleMessageChange={handleMessageChange}
+      />
+    </Grid>
   );
 };
 

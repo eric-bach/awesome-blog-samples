@@ -89,8 +89,8 @@ export class WebsocketDemoStack extends Stack {
       entry: 'src/send_message',
       runtime: Runtime.PYTHON_3_10,
       architecture: Architecture.ARM_64,
-      memorySize: 2048,
-      timeout: Duration.seconds(60),
+      memorySize: 768,
+      timeout: Duration.seconds(30),
       environment: {
         TABLE_NAME: table.tableName,
       },
@@ -105,7 +105,7 @@ export class WebsocketDemoStack extends Stack {
       runtime: Runtime.PYTHON_3_10,
       architecture: Architecture.ARM_64,
       memorySize: 384,
-      timeout: Duration.seconds(30),
+      timeout: Duration.seconds(10),
       environment: {
         TABLE_NAME: table.tableName,
       },
@@ -120,7 +120,7 @@ export class WebsocketDemoStack extends Stack {
       runtime: Runtime.PYTHON_3_10,
       architecture: Architecture.ARM_64,
       memorySize: 384,
-      timeout: Duration.seconds(30),
+      timeout: Duration.seconds(10),
       environment: {
         TABLE_NAME: table.tableName,
       },
@@ -135,7 +135,7 @@ export class WebsocketDemoStack extends Stack {
       runtime: Runtime.PYTHON_3_10,
       architecture: Architecture.ARM_64,
       memorySize: 384,
-      timeout: Duration.seconds(30),
+      timeout: Duration.seconds(10),
       environment: {
         USER_POOL_ID: userPool.userPoolId,
         APP_CLIENT_ID: userPoolClient.userPoolClientId,
