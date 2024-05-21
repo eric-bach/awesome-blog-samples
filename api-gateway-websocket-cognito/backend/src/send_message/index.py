@@ -14,6 +14,7 @@ logger = Logger()
 @logger.inject_lambda_context(log_event=True)
 def handler(event, context):
     event_body = json.loads(event["body"])
+    message = event_body["message"]
 
     paginator = ddb_client.get_paginator("scan")
     connectionIds = []
@@ -27,12 +28,14 @@ def handler(event, context):
     for page in paginator.paginate(TableName=TABLE_NAME):
         connectionIds.extend(page["Items"])
 
+    conversation = {'message': message, 'type': 'agent'}
+
     for connectionId in connectionIds:
         try:
             logger.info("Sending message to connectionId: " + connectionId["connectionId"]["S"])
             api_gateway_management_api.post_to_connection(
                 ConnectionId=connectionId["connectionId"]["S"],
-                Data=json.dumps({"message": event_body["message"]})
+                Data=json.dumps({"data": conversation})
             )
         except Exception as e:
              logger.error(f"Error sending message to connectionId {connectionId}: {e}")
